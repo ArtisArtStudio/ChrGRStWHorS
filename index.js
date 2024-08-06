@@ -1,6 +1,7 @@
 import {Wheel} from './js/spin-wheel-esm.js';
 import {confetti_effect} from './main.js';
 import * as easing from './js/easing.js';
+var spinning = false;
 window.onload = async () => {
 
     const container = document.querySelector('.wheel-wrapper');
@@ -19,8 +20,8 @@ window.onload = async () => {
         itemLabelColors: ['#000'],
         itemLabelBaselineOffset: -0.06,
         itemBackgroundColors: ['#00A44C','#ED0000'],
-        rotationSpeed: 700,
-        rotationResistance: -110,
+        rotationSpeed: 10,
+        rotationResistance: 0,
         lineWidth: 0,
         overlayImage: a,
         borderWidth: 0,
@@ -72,7 +73,7 @@ window.onload = async () => {
       },
       {
         label: 'easeElasticOut',
-        function: easing.elasticOut,
+        function: easing.easeOutCirc,
       },
       {
         label: 'easeBounceOut',
@@ -82,25 +83,37 @@ window.onload = async () => {
     await loadImages(a);
 
     const wheel = new Wheel(container, props);
+    wheel.isInteractive = false;
+
     document.querySelector('.wheel-wrapper').style.visibility = 'visible';
     var functionFinished = function() {
         confetti_effect();
+        spinning = false;
+    };
+    var playtick = function() {
+        
     };
     wheel.onRest = functionFinished;
+    wheel.onCurrentIndexChange= playtick;
 
 
     window.addEventListener('click', (e) => {
   
       // Listen for click event on spin button:
       if (e.target === btn) {
-        const winningItemIndex = 0;
-        const easing = easingFunctions[1];
+        if (spinning) {
+          return;
+        }
+        spinning = true;
+        const winningItemIndex = fetchWinningItemIndexFromApi();
+        const easing = easingFunctions[4];
         const easingFunction = easing.function;
-        const duration = 5000;
+        const duration = 13000;
         const spinDirection = 1;
-        const revolutions = 4;
-        wheel.isInteractive = true;
-        wheel.spinToItem(1, duration, true, revolutions, spinDirection, easingFunction);
+        const revolutions = 8;
+
+        wheel.spinToItem(winningItemIndex, duration, true, revolutions, spinDirection, easingFunction);
+
       }
   
 
@@ -108,6 +121,10 @@ window.onload = async () => {
     });  
    
   };
+  function fetchWinningItemIndexFromApi() {
+    // Simulate a call to the back-end
+    return 1;
+  }
 
   async function loadImages(images) {
   const promises=[];

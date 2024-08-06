@@ -118,9 +118,9 @@ white-space:normal;
 }
 
 #scratcher-box {
-  width:22em;
+  width:24em;
   align-content: center;
-  height:22em;
+  height:24em;
   /*background-color: #FFFFFF;*/
   position:absolute;
   -webkit-transform: translate(-50%, -50%);
@@ -194,7 +194,7 @@ white-space:normal;
   #scratcher-box {
     position:absolute;
     scale: 1; 
-    top: 70%;
+    top: 65%;
   }
   
 } 
@@ -216,8 +216,8 @@ white-space:normal;
   #scratcher-box {
     position:absolute;
     scale: 0.8; 
-    top: 60%;
-    left:40%;
+    top: 55%;
+    left:38%;
   }
   .images{
     max-width: 80% !important;

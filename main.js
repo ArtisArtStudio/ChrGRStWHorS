@@ -32,7 +32,7 @@ function randomInRange(min, max) {
 function randomInRangeint(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 };
-export function confetti_effect() {
+function confetti_effect() {
     console.log("called");
     $('#tboy').show();
     $('#tboy').text(gendertext);
@@ -91,7 +91,8 @@ export function confetti_effect() {
           
  };
 
-   
+ export {confetti_effect};
+
     
     function supportsCanvas() {
         return !!document.createElement('canvas').getContext;
