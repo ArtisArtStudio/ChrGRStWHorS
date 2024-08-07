@@ -96,7 +96,7 @@ function confetti_effect() {
         if (!nosound) {
             var ticksound = new Audio();
             // soundHandle.pause();
-            // soundHandle.currentTime=0;
+            ticksound.currentTime=0;
             ticksound.volume=0.5;              
             ticksound.src = 'audio/tick.mp3';
             ticksound.play();
@@ -119,7 +119,7 @@ export {playticksound};
         $('#girl').show();
         $('.images').show();
 
-        document.getElementsByTagName("body")[0].style.backgroundColor = "#ffffff";
+        document.getElementsByTagName("body")[0].style.backgroundColor = colortxt;
         document.getElementsByTagName("body")[0].style.backgroundImage = 'url(images/background.jpg)';
         document.getElementById("resetbutton").value = "Spin!";
 
