@@ -1,7 +1,8 @@
 import {Wheel} from './js/spin-wheel-esm.js';
-import {confetti_effect} from './main.js';
+import {confetti_effect, playticksound, onResetClicked} from './main.js';
 import * as easing from './js/easing.js';
 var spinning = false;
+var finishedSpin = false;
 window.onload = async () => {
 
     const container = document.querySelector('.wheel-wrapper');
@@ -73,7 +74,7 @@ window.onload = async () => {
       },
       {
         label: 'easeElasticOut',
-        function: easing.easeOutCirc,
+        function: easing.easeInOutCirc,
       },
       {
         label: 'easeBounceOut',
@@ -88,10 +89,13 @@ window.onload = async () => {
     document.querySelector('.wheel-wrapper').style.visibility = 'visible';
     var functionFinished = function() {
         confetti_effect();
-        spinning = false;
+        finishedSpin = true;
+        spinning=false;
+        document.getElementById("resetbutton").value = "Try Again";
+
     };
     var playtick = function() {
-        
+        playticksound();
     };
     wheel.onRest = functionFinished;
     wheel.onCurrentIndexChange= playtick;
@@ -102,6 +106,11 @@ window.onload = async () => {
       // Listen for click event on spin button:
       if (e.target === btn) {
         if (spinning) {
+          return;
+        }
+        if (finishedSpin) {
+          finishedSpin=false;
+          onResetClicked();
           return;
         }
         spinning = true;

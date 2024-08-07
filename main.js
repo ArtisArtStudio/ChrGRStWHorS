@@ -33,7 +33,7 @@ function randomInRangeint(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 };
 function confetti_effect() {
-    console.log("called");
+    soundHandle.src = 'audio/celebrate.mp3';
     $('#tboy').show();
     $('#tboy').text(gendertext);
     $('#tboy').css('color',colortxt);
@@ -92,8 +92,18 @@ function confetti_effect() {
  };
 
  export {confetti_effect};
+    function playticksound() {
+        if (!nosound) {
+            var ticksound = new Audio();
+            // soundHandle.pause();
+            // soundHandle.currentTime=0;
+            ticksound.volume=0.5;              
+            ticksound.src = 'audio/tick.mp3';
+            ticksound.play();
+        }
+    }
+export {playticksound};
 
-    
     function supportsCanvas() {
         return !!document.createElement('canvas').getContext;
     };
@@ -101,8 +111,7 @@ function confetti_effect() {
     
 
     function onResetClicked() {
-        var i;
-        $("#resetbutton").hide();
+        //$("#resetbutton").hide();
         
         $('#tboy').hide();
         $('#boy').show();
@@ -112,6 +121,7 @@ function confetti_effect() {
 
         document.getElementsByTagName("body")[0].style.backgroundColor = "#ffffff";
         document.getElementsByTagName("body")[0].style.backgroundImage = 'url(images/background.jpg)';
+        document.getElementById("resetbutton").value = "Spin!";
 
         $('#H3').show();
         $('#H4').show();
@@ -120,15 +130,13 @@ function confetti_effect() {
         soundHandle.currentTime = 0;    
         return false;
     };
-    
+    export {onResetClicked};
 
    
     
     function initPage() {
  
         var i, i1;
-        
-      
         surname = params.get('surname');
         if (surname !=null && surname.replace(/\s/g, '').length) {
             $("#baby").text('baby ' + surname+'!');}
@@ -151,7 +159,6 @@ function confetti_effect() {
                 soundHandle.autoplay = true;
                 soundHandle.muted=false;
                 soundHandle.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
-                soundHandle.src = 'audio/celebrate.mp3';
                 soundHandle.play();
                 soundHandle.pause();
         });
