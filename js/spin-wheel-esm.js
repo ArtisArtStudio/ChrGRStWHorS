@@ -23,7 +23,7 @@ var R = Math.pow,
     };
 
 function x(i = 0, e = 0, t = 14) {
-    return parseFloat((Math.random() * (e - i) + i).toFixed(t))
+    return Y(Math.random() * (e - i) + i);
 }
 
 function m(i = 0) {
@@ -102,7 +102,7 @@ function l({
 }
 
 function Y(i = 0) {
-    return Number(i.toFixed(9))
+    return Math.floor((i * 1000000) / 1000000);
 }
 
 function k(i) {
@@ -539,16 +539,18 @@ var B = class {
         })
     }
     spinToItem(e = 0, t = 0, s = !0, n = 1, r = 1, a = null) {
-        alert("draw");
+        //alert("draw");
         this.stop(), this._dragEvents = [];
-        let d = s ? this.items[e].getCenterAngle() : this.items[e].getRandomAngle(),
-            h = T(this.rotation, d - this._pointerAngle, r);
-        h += n * 360 * r, this.animate(h, t, a), this.raiseEvent_onSpin({
+        var d = s ? this.items[e].getCenterAngle() : this.items[e].getRandomAngle();
+        var h = T(this.rotation, d - this._pointerAngle, r);
+        h = h + (n * 360 * r);
+        this.animate(h, t, a);
+        this.raiseEvent_onSpin({
             method: "spintoitem",
             targetItemIndex: e,
             targetRotation: h,
             duration: t
-        })
+        });
     }
     animate(e, t, s) {
         this._spinToStartRotation = this.rotation, this._spinToEndRotation = e, this._spinToTimeStart = performance.now(), this._spinToTimeEnd = this._spinToTimeStart + t, this._spinToEasingFunction = s || k, this.refresh()
@@ -610,16 +612,16 @@ var B = class {
         var s = 360 / t,
             n, r = e,
             a = [];
-        
+        r=Number(r.toFixed(6));
+        r=r+0.000001;
+        //console.log(r);
         for (let d of this._items) {
             n = d.weight * s; 
-            n= Number(n.toFixed(5));
             a.push({
             start: r,
             end: r + n
         });
         r = r+n;
-        r = Number(r.toFixed(5));
         //console.log(r);
         }
         return this._items.length > 1 && (a[a.length - 1].end = a[0].start + 360), a
