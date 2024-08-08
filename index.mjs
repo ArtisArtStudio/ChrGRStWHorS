@@ -1,6 +1,6 @@
-import {Wheel} from './js/spin-wheel-esm.js';
-import {confetti_effect, playticksound, onResetClicked} from './main.js';
-import * as easing from './js/easing.js';
+import {Wheel} from './js/spin-wheel-esm.mjs';
+import {confetti_effect, playticksound, onResetClicked} from './main.mjs';
+import * as easing from './js/easing.mjs';
 var spinning = false;
 var finishedSpin = false;
 window.onload = async () => {
