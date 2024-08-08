@@ -1049,7 +1049,13 @@ var B = class {
             }
             return 0.5 * ( Math.sqrt( 1 - scaledTime1 * scaledTime1 ) + 1 );
         };
-        this.refreshCursor(), e !== 0 && this.spinToItem(1,13000,true,8,1,ease);// && this.beginSpin(e * (1e3 / 250), "interact")
+        var easeOut = function easeOutCirc( t ) {
+
+            const t1 = t - 1;
+            return Math.sqrt( 1 - t1 * t1 );
+          
+          }
+        this.refreshCursor(), e !== 0 && this.spinToItem(1,13000,true,8,1,easeOut);// && this.beginSpin(e * (1e3 / 250), "interact")
     }
     isDragEventTooOld(e = 0, t = {}) {
         return e - t.now > 250

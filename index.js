@@ -74,7 +74,7 @@ window.onload = async () => {
       },
       {
         label: 'easeElasticOut',
-        function: easing.easeInOutCirc,
+        function: easing.easeOutCirc,
       },
       {
         label: 'easeBounceOut',
