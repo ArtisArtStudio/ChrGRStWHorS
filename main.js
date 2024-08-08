@@ -135,7 +135,7 @@ export {playticksound};
    
     
     function initPage() {
-        alert("loaded main.js");
+        //alert("loaded main.js");
 
         var i, i1;
         surname = params.get('surname');

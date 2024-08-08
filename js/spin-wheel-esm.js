@@ -1,3 +1,5 @@
+import { easeInOutCirc } from "./easing.js";
+
 /**
  * spin-wheel (ESM) v5.0.0
  * https://github.com/CrazyTim/spin-wheel#readme
@@ -1038,7 +1040,16 @@ var B = class {
             this._dragEvents.length = s, this.debug && this.refresh();
             break
         }
-        this.refreshCursor(), e !== 0 && this.beginSpin(e * (1e3 / 250), "interact")
+        var ease = function easeInOutCirc(t){
+            const scaledTime = t * 2;
+            const scaledTime1 = scaledTime - 2;
+
+            if( scaledTime < 1 ) {
+            return -0.5 * ( Math.sqrt( 1 - scaledTime * scaledTime ) - 1 );
+            }
+            return 0.5 * ( Math.sqrt( 1 - scaledTime1 * scaledTime1 ) + 1 );
+        };
+        this.refreshCursor(), e !== 0 && this.spinToItem(1,13000,true,8,1,ease);// && this.beginSpin(e * (1e3 / 250), "interact")
     }
     isDragEventTooOld(e = 0, t = {}) {
         return e - t.now > 250

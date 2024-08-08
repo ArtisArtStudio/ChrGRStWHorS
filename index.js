@@ -7,7 +7,7 @@ window.onload = async () => {
 
     const container = document.querySelector('.wheel-wrapper');
     const btn = document.getElementById("resetbutton");
-    alert("loaded index.js");
+    //alert("loaded index.js");
     var a = new Image();
     a.src = './images/spinthewheel-overlay.svg';
     const props = {
@@ -84,7 +84,7 @@ window.onload = async () => {
     await loadImages(a);
 
     const wheel = new Wheel(container, props);
-    wheel.isInteractive = false;
+    wheel.isInteractive = true;
 
     document.querySelector('.wheel-wrapper').style.visibility = 'visible';
     var functionFinished = function() {
