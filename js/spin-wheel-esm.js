@@ -539,6 +539,7 @@ var B = class {
         })
     }
     spinToItem(e = 0, t = 0, s = !0, n = 1, r = 1, a = null) {
+        alert("draw");
         this.stop(), this._dragEvents = [];
         let d = s ? this.items[e].getCenterAngle() : this.items[e].getRandomAngle(),
             h = T(this.rotation, d - this._pointerAngle, r);
