@@ -7,6 +7,9 @@
 var snow;
 var surname;
 var soundHandle = new Audio();
+var ticksound = new Audio();
+var lastplayed=0;
+//var soundcounter= 0;
 var triggered=false;
 var nosound=true;
 var params = new URLSearchParams(window.location.search.slice(1));
@@ -25,7 +28,7 @@ var gendertext2 = "It is a Boy!";
 var gendertext3= "It is a Demo!";
 //Select the gender text
 var gendertext = gendertext1;
-
+var c;
 function randomInRange(min, max) {
     return Math.random() * (max - min) + min;
 };
@@ -56,6 +59,7 @@ function confetti_effect() {
         soundHandle.play();
     }
     triggered=true;
+    //soundcounter=0;
     var duration = 10 * 1000;
     var animationEnd = Date.now() + duration;
     var skew=1;
@@ -63,7 +67,7 @@ function confetti_effect() {
         var timeLeft = animationEnd - Date.now();
         // var ticks = Math.max(200, 300 * (timeLeft / duration));
         skew = Math.max(0.8, skew - 0.001);
-        confetti({
+        c = confetti({
             particleCount: 1,
             startVelocity: 0,
             ticks: 100,
@@ -93,14 +97,19 @@ function confetti_effect() {
 
  export {confetti_effect};
     function playticksound() {
-        if (!nosound) {
-            var ticksound = new Audio();
+        if (!nosound ) {
+            var d=Date.now()-lastplayed;
+
+            if (d<90 && ticksound.currentTime!=0) return; 
             // soundHandle.pause();
+            lastplayed= Date.now();
             ticksound.currentTime=0;
             ticksound.volume=0.5;              
             ticksound.src = 'audio/tick.mp3';
             ticksound.play();
+            //if (d<100) soundcounter +=1;
         }
+
     }
 export {playticksound};
 
@@ -112,13 +121,11 @@ export {playticksound};
 
     function onResetClicked() {
         //$("#resetbutton").hide();
-        
         $('#tboy').hide();
         $('#boy').show();
         $('#or').show();
         $('#girl').show();
         $('.images').show();
-
         document.getElementsByTagName("body")[0].style.backgroundColor = colortxt;
         document.getElementsByTagName("body")[0].style.backgroundImage = 'url(images/background.jpg)';
         document.getElementById("resetbutton").value = "Spin!";

@@ -1,7 +1,6 @@
 import {Wheel} from './js/spin-wheel-esm.js';
 import {confetti_effect, playticksound, onResetClicked} from './main.js';
 import * as easing from './js/easing.js';
-var spinning = false;
 var finishedSpin = false;
 window.onload = async () => {
 
@@ -85,12 +84,14 @@ window.onload = async () => {
 
     const wheel = new Wheel(container, props);
     wheel.isInteractive = true;
-
     document.querySelector('.wheel-wrapper').style.visibility = 'visible';
     var functionFinished = function() {
+        if (finishedSpin) {
+          finishedSpin=false;
+          return;
+        }
         confetti_effect();
         finishedSpin = true;
-        spinning=false;
         document.getElementById("resetbutton").value = "Try Again";
 
     };
@@ -105,15 +106,16 @@ window.onload = async () => {
   
       // Listen for click event on spin button:
       if (e.target === btn) {
-        if (spinning) {
-          return;
-        }
         if (finishedSpin) {
-          finishedSpin=false;
+          wheel.isSpinning=0;
+          wheel.spinTo(1);
           onResetClicked();
           return;
         }
-        spinning = true;
+        if (wheel.isSpinning) {
+          return;
+        }
+        
         const winningItemIndex = fetchWinningItemIndexFromApi();
         const easing = easingFunctions[4];
         const easingFunction = easing.function;

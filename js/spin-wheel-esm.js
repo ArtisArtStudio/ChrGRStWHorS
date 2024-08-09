@@ -1,4 +1,3 @@
-import { easeInOutCirc } from "./easing.js";
 
 /**
  * spin-wheel (ESM) v5.0.0
@@ -142,6 +141,7 @@ var p = Object.freeze({
             debug: !1,
             image: null,
             isInteractive: !0,
+            isSpinning: !0,
             itemBackgroundColors: ["#fff"],
             itemLabelAlign: p.right,
             itemLabelBaselineOffset: 0,
@@ -542,6 +542,7 @@ var B = class {
     }
     spinToItem(e = 0, t = 0, s = !0, n = 1, r = 1, a = null) {
         //alert("draw");
+        this.isSpinning=1;
         this.stop(), this._dragEvents = [];
         var d = s ? this.items[e].getCenterAngle() : this.items[e].getRandomAngle();
         var h = T(this.rotation, d - this._pointerAngle, r);
@@ -1002,7 +1003,7 @@ var B = class {
         x: 0,
         y: 0
     }) {
-        if (this.canvas === null) return;
+        if (this.canvas === null || this.isSpinning==1) return;
         let t = v(e, this.canvas, this.getActualPixelRatio());
         this.isDragging = !0, this.stop(), this._dragEvents = [{
             distance: 0,
@@ -1015,7 +1016,7 @@ var B = class {
         x: 0,
         y: 0
     }) {
-        if (this.canvas === null) return;
+        if (this.canvas === null || this.isSpinning==1) return;
         let t = v(e, this.canvas, this.getActualPixelRatio()),
             s = this.getAngleFromCenter(t),
             n = this._dragEvents[0],
