@@ -7,7 +7,7 @@
 var snow;
 var surname;
 var soundHandle = new Audio();
-var ticksound = new Audio();
+var soundHandle = new Audio();
 var lastplayed=0;
 //var soundcounter= 0;
 var triggered=false;
@@ -98,17 +98,11 @@ function confetti_effect() {
  export {confetti_effect};
     function playticksound() {
         if (!nosound ) {
-            var d=Date.now()-lastplayed;
-
-            if (d<90 && ticksound.currentTime!=0) return; 
-            // soundHandle.pause();
+            if (soundHandle.currentTime!=0) return;
             lastplayed= Date.now();
-            ticksound = document.getElementById('soundHandle');  
-            ticksound.currentTime=0;
-            ticksound.volume=0.5;              
-            ticksound.src = 'audio/tick.mp3';
-            ticksound.play();
-            //if (d<100) soundcounter +=1;
+            soundHandle.volume=0.5;              
+            soundHandle.src = 'audio/tick.mp3';
+            soundHandle.play();
         }
 
     }
@@ -165,6 +159,9 @@ export {playticksound};
             nosound=false;
             if (soundHandle.currentTime!=0) {return;}
                 soundHandle = document.getElementById('soundHandle');  
+                soundHandle.addEventListener("ended", function(){
+                    soundHandle.currentTime = 0;
+               });
                 soundHandle.autoplay = true;
                 soundHandle.muted=false;
                 soundHandle.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";

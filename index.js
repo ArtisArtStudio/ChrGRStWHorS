@@ -76,14 +76,14 @@ window.onload = async () => {
         function: easing.bounceOut,
       },
     ];
-    if (userOS ="iOS" && userOSver<13) {
+   /*  if (userOS ="iOS" && userOSver<13) {
         props.overlayImage=null;
-    } else {
+    } else { */
         var a = new Image();
         a.src = './images/spinthewheel-overlay.svg';
         props.overlayImage = a;
         await loadImages(a);
-    }
+    //}
 
     const wheel = new Wheel(container, props);
     wheel.isInteractive = true;
@@ -1245,7 +1245,7 @@ var Wheel = class {
             return Math.sqrt( 1 - t1 * t1 );
           
           }
-        this.refreshCursor(), e > 100 && this.spinToItem(1,13000,true,8,1,easeOut);// && this.beginSpin(e * (1e3 / 250), "interact")
+        this.refreshCursor(), e > 90 && this.spinToItem(1,13000,true,8,1,easeOut);// && this.beginSpin(e * (1e3 / 250), "interact")
     }
     isDragEventTooOld(e = 0, t = {}) {
         return e - t.now > 250
