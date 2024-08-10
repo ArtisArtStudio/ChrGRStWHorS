@@ -15,7 +15,7 @@ window.onload = async () => {
         itemLabelAlign: "center",
         itemLabelColors: ['#000'],
         itemLabelBaselineOffset: -0.06,
-        itemBackgroundColors: ['#00A44C','#ED0000'],
+        itemBackgroundColors: ['#016b33','#c21b1b'],
         rotationSpeed: 10,
         rotationResistance: 0,
         lineWidth: 0,
