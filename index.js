@@ -1,4 +1,3 @@
-//import {Wheel} from './js/spin-wheel-esm.js';
 import {confetti_effect, playticksound, onResetClicked} from './main.js';
 import * as easing from './js/easing.js';
 var finishedSpin = false;
@@ -6,9 +5,8 @@ window.onload = async () => {
     getOS();
     const container = document.querySelector('.wheel-wrapper');
     const btn = document.getElementById("resetbutton");
-    //alert("loaded index.js");
-    //var a = new Image();
-    //a.src = './images/spinthewheel-overlay.svg';
+    var a = new Image();
+    a.src = './images/spinthewheel-overlay.svg';
     const props = {
         radius: 0.9,
         pointerAngle: 0,
@@ -23,7 +21,7 @@ window.onload = async () => {
         rotationSpeed: 10,
         rotationResistance: 0,
         lineWidth: 0,
-        //overlayImage: a,
+        overlayImage: a,
         borderWidth: 0,
       items: [
         {
@@ -80,7 +78,7 @@ window.onload = async () => {
         function: easing.bounceOut,
       },
     ];
-    //await loadImages(a);
+    await loadImages(a);
 
     const wheel = new Wheel(container, props);
     wheel.isInteractive = true;
@@ -158,12 +156,12 @@ function getOS( )
   var uaindex;
 
   // determine OS
-  if ( ua.match(/iPad/i) || ua.match(/iPod/i) || ua.match(/iPhone/i) )
+  if ( ua.match(/iPad/) || ua.match(/iPod/) || ua.match(/iPhone/) )
   {
     userOS = 'iOS';
     uaindex = ua.indexOf( 'OS ' );
   }
-  else if ( ua.match(/Android/i) )
+  else if ( ua.match(/Android/) )
   {
     userOS = 'Android';
     uaindex = ua.indexOf( 'Android ' );
@@ -176,18 +174,16 @@ function getOS( )
   // determine version
   if ( userOS === 'iOS'  &&  uaindex > -1 )
   {
-    userOSver = ua.substring( uaindex + 3, 3 ).replace( '_', '.' );
+    userOSver = ua.substring(uaindex + 3, uaindex+3+2);
   }
   else if ( userOS === 'Android'  &&  uaindex > -1 )
   {
-    userOSver = ua.substring( uaindex + 8, 3 );
+    userOSver = ua.substring( uaindex + 8, uaindex + 8 + 3 );
   }
   else
   {
     userOSver = 'unknown';
   }
-  alert(userOSver.charAt(0));
-  alert(userOSver);
 }
 
 var N = Object.defineProperty;
