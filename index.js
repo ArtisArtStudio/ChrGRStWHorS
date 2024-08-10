@@ -3,6 +3,13 @@ import * as easing from './js/easing.js';
 var finishedSpin = false;
 window.onload = async () => {
     getOS();
+    var a = new Image();
+    /* if (userOS ="iOS" && userOSver<13) {
+        a.src = './images/spinthewheel-overlay.png';
+    } else {  */
+        a.src = './images/spinthewheel-overlay.png';
+        
+    //}
     const container = document.querySelector('.wheel-wrapper');
     const btn = document.getElementById("resetbutton");
     const props = {
@@ -19,7 +26,7 @@ window.onload = async () => {
         rotationSpeed: 10,
         rotationResistance: 0,
         lineWidth: 0,
-        overlayImage: null,
+        overlayImage: a,
         borderWidth: 0,
       items: [
         {
@@ -76,15 +83,8 @@ window.onload = async () => {
         function: easing.bounceOut,
       },
     ];
-   /*  if (userOS ="iOS" && userOSver<13) {
-        props.overlayImage=null;
-    } else { */
-        var a = new Image();
-        a.src = './images/spinthewheel-overlay.png';
-        props.overlayImage = a;
-        await loadImages(a);
-    //}
-
+    
+    await loadImages(a);
     const wheel = new Wheel(container, props);
     wheel.isInteractive = true;
     document.querySelector('.wheel-wrapper').style.visibility = 'visible';

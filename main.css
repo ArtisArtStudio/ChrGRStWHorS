@@ -188,14 +188,14 @@ white-space:normal;
       transform-origin: top left;
   } */
   #boy {
-    line-height: 7vh !important;
+    line-height: 6vh !important;
   }
   .images{
     max-width: 80% !important;
   }
   #scratcher-box {
     position:absolute;
-    scale: 1; 
+    scale: 0.8; 
     top: 60%;
   }
   
