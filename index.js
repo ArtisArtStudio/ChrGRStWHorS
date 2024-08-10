@@ -435,7 +435,8 @@ var S = class {
     }
     init(e = {}) {
         this.backgroundColor = e.backgroundColor, this.image = e.image, this.imageOpacity = e.imageOpacity, this.imageRadius = e.imageRadius, this.imageRotation = e.imageRotation, this.imageScale = e.imageScale, this.label = e.label, this.labelColor = e.labelColor, this.value = e.value, this.weight = e.weight
-    }
+        alert("init");
+      }
     get backgroundColor() {
         return this._backgroundColor
     }
@@ -517,11 +518,15 @@ var S = class {
 };
 var Wheel = class {
     constructor(e, t = {}) {
+      alert("wheel_start");
+
         if (!(e instanceof Element)) throw new Error("container must be an instance of Element");
         if (!b(t) && t !== null) throw new Error("props must be an Object or null");
         this._frameRequestId = null, this._rotationSpeed = 0, this._rotationDirection = 1, this._spinToTimeEnd = null, this._lastSpinFrameTime = null, this._isCursorOverWheel = !1, this.add(e);
         for (let s of Object.keys(o.wheel)) this["_" + s] = o.wheel[s];
         t ? this.init(t) : this.init(o.wheel)
+        alert("wheel_end");
+
     }
     init(e = {}) {
         this._isInitialising = !0, this.borderColor = e.borderColor, this.borderWidth = e.borderWidth, this.debug = e.debug, this.image = e.image, this.isInteractive = e.isInteractive, this.itemBackgroundColors = e.itemBackgroundColors, this.itemLabelAlign = e.itemLabelAlign, this.itemLabelBaselineOffset = e.itemLabelBaselineOffset, this.itemLabelColors = e.itemLabelColors, this.itemLabelFont = e.itemLabelFont, this.itemLabelFontSizeMax = e.itemLabelFontSizeMax, this.itemLabelRadius = e.itemLabelRadius, this.itemLabelRadiusMax = e.itemLabelRadiusMax, this.itemLabelRotation = e.itemLabelRotation, this.itemLabelStrokeColor = e.itemLabelStrokeColor, this.itemLabelStrokeWidth = e.itemLabelStrokeWidth, this.items = e.items, this.lineColor = e.lineColor, this.lineWidth = e.lineWidth, this.pixelRatio = e.pixelRatio, this.rotationSpeedMax = e.rotationSpeedMax, this.radius = e.radius, this.rotation = e.rotation, this.rotationResistance = e.rotationResistance, this.offset = e.offset, this.onCurrentIndexChange = e.onCurrentIndexChange, this.onRest = e.onRest, this.onSpin = e.onSpin, this.overlayImage = e.overlayImage, this.pointerAngle = e.pointerAngle
@@ -551,6 +556,8 @@ var Wheel = class {
         this.refresh()
     }
     draw(e = 0) {
+      alert("draw_start");
+
         if (this._frameRequestId = null, this._context === null || this.canvas === null) return;
         let t = this._context;
         t.clearRect(0, 0, this.canvas.width, this.canvas.height), this.animateRotation(e);
