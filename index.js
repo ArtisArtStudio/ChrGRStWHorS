@@ -3,7 +3,7 @@ import {confetti_effect, playticksound, onResetClicked} from './main.js';
 import * as easing from './js/easing.js';
 var finishedSpin = false;
 window.onload = async () => {
-
+    getOS();
     const container = document.querySelector('.wheel-wrapper');
     const btn = document.getElementById("resetbutton");
     //alert("loaded index.js");
@@ -176,16 +176,18 @@ function getOS( )
   // determine version
   if ( userOS === 'iOS'  &&  uaindex > -1 )
   {
-    userOSver = ua.substr( uaindex + 3, 3 ).replace( '_', '.' );
+    userOSver = ua.substring( uaindex + 3, 3 ).replace( '_', '.' );
   }
   else if ( userOS === 'Android'  &&  uaindex > -1 )
   {
-    userOSver = ua.substr( uaindex + 8, 3 );
+    userOSver = ua.substring( uaindex + 8, 3 );
   }
   else
   {
     userOSver = 'unknown';
   }
+  alert(userOSver.charAt(0));
+  alert(userOSver);
 }
 
 var N = Object.defineProperty;
@@ -380,8 +382,9 @@ function V(i = {}) {
     }) => {
         i.resize(), t && i.draw(performance.now())
     });
+
     let e = () => {
-        if (userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 13 ) {
+        if ((userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 13 ) || userOS === 'Android') {
         i._mediaQueryList = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`), i._mediaQueryList.addEventListener("change", i._handler_onDevicePixelRatioChange, {
             once: !0
         })
