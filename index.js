@@ -80,7 +80,7 @@ window.onload = async () => {
         props.overlayImage=null;
     } else { */
         var a = new Image();
-        a.src = './images/spinthewheel-overlay.svg';
+        a.src = './images/spinthewheel-overlay.png';
         props.overlayImage = a;
         await loadImages(a);
     //}
