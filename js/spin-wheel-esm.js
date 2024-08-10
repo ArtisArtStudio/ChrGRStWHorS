@@ -28,7 +28,7 @@ function x(i = 0, e = 0, t = 14) {
 }
 
 function m(i = 0) {
-    return i * Math.PI / 180.000001
+    return i * Math.PI / 180
 }
 
 function I(i, e, t) {
@@ -63,23 +63,23 @@ function A(i, e, t, s) {
     let n = i - t,
         r = e - s,
         a = Math.atan2(-r, -n);
-    return a *= 180.000001 / Math.PI, a < 0 && (a += 360.000001), a
+    return a *= 180 / Math.PI, a < 0 && (a += 360), a
 }
 
 function X(i = 0, e = 0) {
     let t = i + e,
         s;
-    return t > 0 ? s = t % 360.000001 : s = 360.000001 + t % 360.000001, s === 360.000001 && (s = 0), s
+    return t > 0 ? s = t % 360 : s = 360 + t % 360, s === 360 && (s = 0), s
 }
 
 function P(i = 0, e = 0) {
-    let t = 180.000001 - e;
-    return 180.000001 - X(i, t)
+    let t = 180 - e;
+    return 180 - X(i, t)
 }
 
 function T(i = 0, e = 0, t = 1) {
-    let s = (i % 360.000001 + e) % 360.000001;
-    return s = Y(s), s = (t === 1 ? 360.000001 - s : 360.000001 + s) % 360.000001, s *= t, i + s
+    let s = (i % 360 + e) % 360;
+    return s = Y(s), s = (t === 1 ? 360 - s : 360 + s) % 360, s *= t, i + s
 }
 
 function b(i) {
@@ -417,7 +417,7 @@ var B = class {
         for (let [r, a] of s.entries()) {
             let d = this._items[r],
                 h = new Path2D;
-            h.moveTo(this._center.x, this._center.y), h.arc(this._center.x, this._center.y, this._actualRadius - n / 2, m(a.start + -90.000001), m(a.end + -90.000001)), d.path = h
+            h.moveTo(this._center.x, this._center.y), h.arc(this._center.x, this._center.y, this._actualRadius - n / 2, m(a.start + -90), m(a.end + -90)), d.path = h
         }
         this.drawItemBackgrounds(t, s), this.drawItemImages(t, s), this.drawItemLines(t, s), this.drawItemLabels(t, s), this.drawBorder(t), this.drawImage(t, this._image, !1), this.drawImage(t, this._overlayImage, !0), this.drawDebugPointerLine(t), this._isInitialising = !1
     }
@@ -436,7 +436,7 @@ var B = class {
             if (r.image === null) continue;
             e.save(), e.clip(r.path);
             let a = n.start + (n.end - n.start) / 2;
-            e.translate(this._center.x + Math.cos(m(a + -90.000001)) * (this._actualRadius * r.imageRadius), this._center.y + Math.sin(m(a + -90.000001)) * (this._actualRadius * r.imageRadius)), e.rotate(m(a + r.imageRotation)), e.globalAlpha = r.imageOpacity;
+            e.translate(this._center.x + Math.cos(m(a + -90)) * (this._actualRadius * r.imageRadius), this._center.y + Math.sin(m(a + -90)) * (this._actualRadius * r.imageRadius)), e.rotate(m(a + r.imageRotation)), e.globalAlpha = r.imageOpacity;
             let d = this._size / 500 * r.image.width * r.imageScale,
                 h = this._size / 500 * r.image.height * r.imageScale,
                 C = -d / 2,
@@ -452,7 +452,7 @@ var B = class {
         e.drawImage(t, r, r, n, n), e.resetTransform()
     }
     drawDebugPointerLine(e) {
-        !this.debug || (e.translate(this._center.x, this._center.y), e.rotate(m(this._pointerAngle + -90.000001)), e.beginPath(), e.moveTo(0, 0), e.lineTo(this._actualRadius * 2, 0), e.strokeStyle = f.pointerLineColor, e.lineWidth = this.getScaledNumber(2), e.stroke(), e.resetTransform())
+        !this.debug || (e.translate(this._center.x, this._center.y), e.rotate(m(this._pointerAngle + -90)), e.beginPath(), e.moveTo(0, 0), e.lineTo(this._actualRadius * 2, 0), e.strokeStyle = f.pointerLineColor, e.lineWidth = this.getScaledNumber(2), e.stroke(), e.resetTransform())
     }
     drawBorder(e) {
         if (this._borderWidth <= 0) return;
@@ -468,7 +468,7 @@ var B = class {
         let s = this.getScaledNumber(this._lineWidth),
             n = this.getScaledNumber(this._borderWidth);
         e.translate(this._center.x, this._center.y);
-        for (let r of t) e.rotate(m(r.start + -90.000001)), e.beginPath(), e.moveTo(0, 0), e.lineTo(this._actualRadius - n, 0), e.strokeStyle = this.lineColor, e.lineWidth = s, e.stroke(), e.rotate(-m(r.start + -90.000001));
+        for (let r of t) e.rotate(m(r.start + -90)), e.beginPath(), e.moveTo(0, 0), e.lineTo(this._actualRadius - n, 0), e.strokeStyle = this.lineColor, e.lineWidth = s, e.stroke(), e.rotate(-m(r.start + -90));
         e.resetTransform()
     }
     drawItemLabels(e, t = []) {
@@ -481,7 +481,7 @@ var B = class {
             if (h.label.trim() === "" || C === "transparent") continue;
             e.save(), e.clip(h.path);
             let _ = d.start + (d.end - d.start) / 2;
-            if (e.translate(this._center.x + Math.cos(m(_ + -90.000001)) * (this._actualRadius * this.itemLabelRadius), this._center.y + Math.sin(m(_ + -90.000001)) * (this._actualRadius * this.itemLabelRadius)), e.rotate(m(_ + -90.000001)), e.rotate(m(this.itemLabelRotation)), this.debug) {
+            if (e.translate(this._center.x + Math.cos(m(_ + -90)) * (this._actualRadius * this.itemLabelRadius), this._center.y + Math.sin(m(_ + -90)) * (this._actualRadius * this.itemLabelRadius)), e.rotate(m(_ + -90)), e.rotate(m(this.itemLabelRotation)), this.debug) {
                 e.save();
                 let c = 0;
                 this.itemLabelAlign === "left" ? c = this._labelMaxWidth : this.itemLabelAlign === "center" && (c = this._labelMaxWidth / 2), e.beginPath(), e.moveTo(c, 0), e.lineTo(-this._labelMaxWidth + c, 0), e.strokeStyle = f.labelBoundingBoxColor, e.lineWidth = n, e.stroke(), e.strokeRect(c, -this._itemLabelFontSize / 2, -this._labelMaxWidth, this._itemLabelFontSize), e.restore()
@@ -519,7 +519,7 @@ var B = class {
         }
         if (this._lastSpinFrameTime !== null) {
             let t = e - this._lastSpinFrameTime;
-            t > 0 && (this.rotation += t / 1e3 * this._rotationSpeed % 360.000001, this._rotationSpeed = this.getRotationSpeedPlusDrag(t), this._rotationSpeed === 0 ? (this.raiseEvent_onRest(), this._lastSpinFrameTime = null) : this._lastSpinFrameTime = e), this.refresh();
+            t > 0 && (this.rotation += t / 1e3 * this._rotationSpeed % 360, this._rotationSpeed = this.getRotationSpeedPlusDrag(t), this._rotationSpeed === 0 ? (this.raiseEvent_onRest(), this._lastSpinFrameTime = null) : this._lastSpinFrameTime = e), this.refresh();
             return
         }
     }
@@ -546,7 +546,7 @@ var B = class {
         this.stop(), this._dragEvents = [];
         var d = s ? this.items[e].getCenterAngle() : this.items[e].getRandomAngle();
         var h = T(this.rotation, d - this._pointerAngle, r);
-        h = Y(h + (n * 360.000001 * r));
+        h = Y(h + (n * 360 * r));
         //console.log(h);
         this.animate(Y(h), t, a);
         this.raiseEvent_onSpin({
@@ -595,7 +595,7 @@ var B = class {
         x: 0,
         y: 0
     }) {
-        return (A(this._center.x, this._center.y, e.x, e.y) + 90.000001) % 360.000001
+        return (A(this._center.x, this._center.y, e.x, e.y) + 90) % 360
     }
     getCurrentIndex() {
         return this._currentIndex
@@ -603,7 +603,7 @@ var B = class {
     refreshCurrentIndex(e = []) {
         this._items.length === 0 && (this._currentIndex = -1);
         for (let [t, s] of e.entries())
-            if (!!I(this._pointerAngle, s.start % 360.000001, s.end % 360.000001)) {
+            if (!!I(this._pointerAngle, s.start % 360, s.end % 360)) {
                 if (this._currentIndex === t) break;
                 this._currentIndex = t, this._isInitialising || this.raiseEvent_onCurrentIndexChange();
                 break
@@ -613,7 +613,7 @@ var B = class {
         let t = 0;
         for (let d of this.items) t += d.weight;
 
-        var s = 360.000001 / t,
+        var s = 360 / t,
             n, r = e,
             a = [];
         r=Number((r+0.000001).toFixed(6));
@@ -628,7 +628,7 @@ var B = class {
         r=Number((r+0.000001).toFixed(6));
         //console.log(r);
         }
-        return this._items.length > 1 && (a[a.length - 1].end = a[0].start + Number((360.000001+0.000001).toFixed(6))), a
+        return this._items.length > 1 && (a[a.length - 1].end = a[0].start + Number((360+0.000001).toFixed(6))), a
     }
     refresh() {
         this._frameRequestId === null && (this._frameRequestId = window.requestAnimationFrame(e => this.draw(e)))
@@ -947,9 +947,9 @@ var B = class {
         this._pointerAngle = l({
             val: e,
             isValid: u(e) && e >= 0,
-            errorMessage: "Wheel.pointerAngle must be a number between 0 and 360.000001",
+            errorMessage: "Wheel.pointerAngle must be a number between 0 and 360",
             defaultValue: o.wheel.pointerAngle,
-            action: () => e % 360.000001
+            action: () => e % 360
         }), this.debug && this.refresh()
     }
     get radius() {
@@ -1056,7 +1056,7 @@ var B = class {
             return Math.sqrt( 1 - t1 * t1 );
           
           }
-        this.refreshCursor(), e !== 0 && this.spinToItem(1,13000,true,8,1,easeOut);// && this.beginSpin(e * (1e3 / 250), "interact")
+        this.refreshCursor(), e > 100 && this.spinToItem(1,13000,true,8,1,easeOut);// && this.beginSpin(e * (1e3 / 250), "interact")
     }
     isDragEventTooOld(e = 0, t = {}) {
         return e - t.now > 250
