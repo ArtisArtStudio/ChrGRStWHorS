@@ -148,6 +148,46 @@ window.onload = async () => {
     throw new Error('An image could not be loaded');
   }
 }
+
+var userOS;    // will either be iOS, Android or unknown
+var userOSver; // this is a string, use Number(userOSver) to convert
+
+function getOS( )
+{
+  var ua = navigator.userAgent;
+  var uaindex;
+
+  // determine OS
+  if ( ua.match(/iPad/i) || ua.match(/iPod/i) || ua.match(/iPhone/i) )
+  {
+    userOS = 'iOS';
+    uaindex = ua.indexOf( 'OS ' );
+  }
+  else if ( ua.match(/Android/i) )
+  {
+    userOS = 'Android';
+    uaindex = ua.indexOf( 'Android ' );
+  }
+  else
+  {
+    userOS = 'unknown';
+  }
+
+  // determine version
+  if ( userOS === 'iOS'  &&  uaindex > -1 )
+  {
+    userOSver = ua.substr( uaindex + 3, 3 ).replace( '_', '.' );
+  }
+  else if ( userOS === 'Android'  &&  uaindex > -1 )
+  {
+    userOSver = ua.substr( uaindex + 8, 3 );
+  }
+  else
+  {
+    userOSver = 'unknown';
+  }
+}
+
 var N = Object.defineProperty;
 var y = Object.getOwnPropertySymbols;
 var j = Object.prototype.hasOwnProperty,
@@ -341,9 +381,11 @@ function V(i = {}) {
         i.resize(), t && i.draw(performance.now())
     });
     let e = () => {
+        if (userOS === 'iOS' && Number( userOSver.charAt(0) ) >= 13 ) {
         i._mediaQueryList = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`), i._mediaQueryList.addEventListener("change", i._handler_onDevicePixelRatioChange, {
             once: !0
         })
+    }
     };
     i._handler_onDevicePixelRatioChange = () => {
         i.resize(), e()
