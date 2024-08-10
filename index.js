@@ -5,8 +5,6 @@ window.onload = async () => {
     getOS();
     const container = document.querySelector('.wheel-wrapper');
     const btn = document.getElementById("resetbutton");
-    var a = new Image();
-    a.src = './images/spinthewheel-overlay.svg';
     const props = {
         radius: 0.9,
         pointerAngle: 0,
@@ -21,7 +19,7 @@ window.onload = async () => {
         rotationSpeed: 10,
         rotationResistance: 0,
         lineWidth: 0,
-        overlayImage: a,
+        overlayImage: null,
         borderWidth: 0,
       items: [
         {
@@ -78,7 +76,14 @@ window.onload = async () => {
         function: easing.bounceOut,
       },
     ];
-    await loadImages(a);
+    if (userOS ="iOS" && userOSver<13) {
+        props.overlayImage=null;
+    } else {
+        var a = new Image();
+        a.src = './images/spinthewheel-overlay.svg';
+        props.overlayImage = a;
+        await loadImages(a);
+    }
 
     const wheel = new Wheel(container, props);
     wheel.isInteractive = true;

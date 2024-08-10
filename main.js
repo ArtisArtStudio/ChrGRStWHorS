@@ -103,6 +103,7 @@ function confetti_effect() {
             if (d<90 && ticksound.currentTime!=0) return; 
             // soundHandle.pause();
             lastplayed= Date.now();
+            ticksound = document.getElementById('soundHandle');  
             ticksound.currentTime=0;
             ticksound.volume=0.5;              
             ticksound.src = 'audio/tick.mp3';
