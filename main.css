@@ -195,7 +195,8 @@ white-space:normal;
   }
   #scratcher-box {
     position:absolute;
-    scale: 0.8; 
+    width: 22em;
+    height: 22em; 
     top: 60%;
   }
   

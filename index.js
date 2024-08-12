@@ -75,7 +75,8 @@ window.onload = async () => {
         playticksound();
     };
     wheel.onRest = functionFinished;
-    wheel.onCurrentIndexChange= playtick;
+    wheel.onSpin = playtick;
+    //wheel.onCurrentIndexChange= playtick;
 
 
     window.addEventListener('click', (e) => {
@@ -96,7 +97,7 @@ window.onload = async () => {
         const duration = 13000;
         const spinDirection = 1;
         const revolutions = 8;
-
+        //playticksound();
         wheel.spinToItem(winningItemIndex, duration, true, revolutions, spinDirection, easeOut);
 
       }
