@@ -94,9 +94,11 @@ function confetti_effect() {
  };
 
  export {confetti_effect};
+ 
     function playticksound() {
         if (!nosound ) {
             if (tickSound.currentTime!=0) return;
+            tickSound.src = 'audio/tick.wav';
             tickSound.volume=0.5;              
             tickSound.play();
         }
@@ -168,8 +170,7 @@ export {playticksound};
             tickSound.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
             tickSound.play();
             tickSound.pause();
-            tickSound.src = 'audio/tick.mp3';
-            tickSound.load();    
+            //tickSound.load();    
         });
         document.addEventListener(
             "visibilitychange",

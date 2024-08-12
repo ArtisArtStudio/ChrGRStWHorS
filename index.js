@@ -1,5 +1,4 @@
 import {confetti_effect, playticksound, onResetClicked} from './main.js';
-import * as easing from './js/easing.js';
 var finishedSpin = false;
 window.onload = async () => {
     getOS();
@@ -57,32 +56,6 @@ window.onload = async () => {
       itemLabelRadiusMax: 0.3,
     };
   
-    const easingFunctions = [
-      {
-        label: 'default (easeSinOut)',
-        function: null,
-      },
-      {
-        label: 'easeSinInOut',
-        function: easing.sinInOut,
-      },
-      {
-        label: 'easeCubicOut',
-        function: easing.cubicOut,
-      },
-      {
-        label: 'easeCubicInOut',
-        function: easing.cubicInOut,
-      },
-      {
-        label: 'easeElasticOut',
-        function: easing.easeOutCirc,
-      },
-      {
-        label: 'easeBounceOut',
-        function: easing.bounceOut,
-      },
-    ];
     
     await loadImages(a);
     const wheel = new Wheel(container, props);
@@ -120,13 +93,11 @@ window.onload = async () => {
         }
         
         const winningItemIndex = fetchWinningItemIndexFromApi();
-        const easing = easingFunctions[4];
-        const easingFunction = easing.function;
         const duration = 13000;
         const spinDirection = 1;
         const revolutions = 8;
 
-        wheel.spinToItem(winningItemIndex, duration, true, revolutions, spinDirection, easingFunction);
+        wheel.spinToItem(winningItemIndex, duration, true, revolutions, spinDirection, easeOut);
 
       }
   
@@ -144,7 +115,6 @@ window.onload = async () => {
   const promises=[];
 
     if (images instanceof HTMLImageElement) promises.push(images.decode());
-
   try {
     await Promise.all(promises);
   } catch (error) {
@@ -561,6 +531,21 @@ var S = class {
         return x(this.getStartAngle(), this.getEndAngle())
     }
 };
+var ease = function easeInOutCirc(t){
+    const scaledTime = t * 2;
+    const scaledTime1 = scaledTime - 2;
+
+    if( scaledTime < 1 ) {
+    return -0.5 * ( Math.sqrt( 1 - scaledTime * scaledTime ) - 1 );
+    }
+    return 0.5 * ( Math.sqrt( 1 - scaledTime1 * scaledTime1 ) + 1 );
+};
+var easeOut = function easeOutCirc( t ) {
+
+    const t1 = t - 1;
+    return Math.sqrt( 1 - t1 * t1 );
+  
+  }
 var Wheel = class {
     constructor(e, t = {}) {
         if (!(e instanceof Element)) throw new Error("container must be an instance of Element");
@@ -1230,21 +1215,7 @@ var Wheel = class {
             this._dragEvents.length = s, this.debug && this.refresh();
             break
         }
-        var ease = function easeInOutCirc(t){
-            const scaledTime = t * 2;
-            const scaledTime1 = scaledTime - 2;
-
-            if( scaledTime < 1 ) {
-            return -0.5 * ( Math.sqrt( 1 - scaledTime * scaledTime ) - 1 );
-            }
-            return 0.5 * ( Math.sqrt( 1 - scaledTime1 * scaledTime1 ) + 1 );
-        };
-        var easeOut = function easeOutCirc( t ) {
-
-            const t1 = t - 1;
-            return Math.sqrt( 1 - t1 * t1 );
-          
-          }
+        
         this.refreshCursor(), e > 90 && this.spinToItem(1,13000,true,8,1,easeOut);// && this.beginSpin(e * (1e3 / 250), "interact")
     }
     isDragEventTooOld(e = 0, t = {}) {
