@@ -72,11 +72,13 @@ window.onload = async () => {
 
     };
     var playtick = function() {
+        //if (wheel.isSpinning===1) {
         playticksound();
+        //}
     };
     wheel.onRest = functionFinished;
-    wheel.onSpin = playtick;
-    //wheel.onCurrentIndexChange= playtick;
+    //wheel.onSpin = playtick;
+    wheel.onCurrentIndexChange= playtick;
 
 
     window.addEventListener('click', (e) => {
