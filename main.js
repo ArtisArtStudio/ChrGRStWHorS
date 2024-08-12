@@ -4,11 +4,9 @@
  * depends on jQuery>=1.7
  */
 
-var snow;
 var surname;
 var soundHandle = new Audio();
-var soundHandle = new Audio();
-var lastplayed=0;
+var tickSound = new Audio();
 //var soundcounter= 0;
 var triggered=false;
 var nosound=true;
@@ -98,11 +96,9 @@ function confetti_effect() {
  export {confetti_effect};
     function playticksound() {
         if (!nosound ) {
-            if (soundHandle.currentTime!=0) return;
-            lastplayed= Date.now();
-            soundHandle.volume=0.5;              
-            soundHandle.src = 'audio/tick.mp3';
-            soundHandle.play();
+            if (tickSound.currentTime!=0) return;
+            tickSound.volume=0.5;              
+            tickSound.play();
         }
 
     }
@@ -121,7 +117,7 @@ export {playticksound};
         $('#or').show();
         $('#girl').show();
         $('.images').show();
-        document.getElementsByTagName("body")[0].style.backgroundColor = colortxt;
+        document.getElementsByTagName("body")[0].style.backgroundColor = "#FFFFFF";
         document.getElementsByTagName("body")[0].style.backgroundImage = 'url(images/background.jpg)';
         document.getElementById("resetbutton").value = "Spin!";
 
@@ -157,16 +153,23 @@ export {playticksound};
         $('.withsoundbtn').on("click", function (e) {
             document.getElementById('id01').style.display='none';
             nosound=false;
-            if (soundHandle.currentTime!=0) {return;}
-                soundHandle = document.getElementById('soundHandle');  
-                soundHandle.addEventListener("ended", function(){
-                    soundHandle.currentTime = 0;
-               });
-                soundHandle.autoplay = true;
-                soundHandle.muted=false;
-                soundHandle.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
-                soundHandle.play();
-                soundHandle.pause();
+            soundHandle = document.getElementById('soundHandle');              
+            soundHandle = document.getElementById('tickSound');  
+            tickSound.addEventListener("ended", function(){
+                tickSound.currentTime = 0;
+           });
+            soundHandle.autoplay = true;
+            soundHandle.muted=false;
+            soundHandle.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
+            soundHandle.play();
+            soundHandle.pause();
+            tickSound.autoplay = true;
+            tickSound.muted=false;
+            tickSound.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
+            tickSound.play();
+            tickSound.pause();
+            tickSound.src = 'audio/tick.mp3';
+            tickSound.load();    
         });
         document.addEventListener(
             "visibilitychange",
@@ -179,7 +182,7 @@ export {playticksound};
           );
       
         
-        document.getElementById("resetbutton").style.backgroundColor = colortxt;
+        //document.getElementById("resetbutton").style.backgroundColor = colortxt;
 
     };
     
