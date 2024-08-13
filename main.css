@@ -161,12 +161,33 @@ white-space:normal;
     line-height: 5vh !important;
   }
 }  */
-@media (min-width: 1025px){ 
+
+@media (min-width: 768px) and (min-height: 1024px){ 
   .pagetop h4 {
     font-size: 2vh;
   }
   #boy{
     line-height: 7vw;
+  }
+  #scratcher-box {
+    position:absolute;
+    width: 30em;
+    height: 30em; 
+    top: 60%;
+  }
+}
+@media (min-height: 768px) and (min-width: 1024px){ 
+  .pagetop h4 {
+    font-size: 2vh;
+  }
+  #boy{
+    line-height: 7vw;
+  }
+  #scratcher-box {
+    position:absolute;
+    width: 26em;
+    height: 26em; 
+    top: 60%;
   }
 }
 @media (max-width: 375px), (max-height:667px) {
@@ -218,9 +239,9 @@ white-space:normal;
  
   #scratcher-box {
     position:absolute;
-    scale: 0.8; 
-    top: 55%;
-    left:38%;
+    width: 18em;
+    height: 18em; 
+    top: 60%;
   }
   .images{
     max-width: 80% !important;

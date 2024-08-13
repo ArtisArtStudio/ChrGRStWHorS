@@ -218,7 +218,7 @@ font-size: 7vw !important;
     width: calc(55% - 10px);
   }
 }
-@media (max-height:321px){ 
+@media only screen and (max-height:321px){ 
   
   #scratcher-box {
     scale: 0.7;

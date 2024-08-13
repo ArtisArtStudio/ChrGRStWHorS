@@ -6,7 +6,6 @@
 
 var surname;
 var soundHandle = new Audio();
-var tickSound = new Audio();
 //var soundcounter= 0;
 var triggered=false;
 var nosound=true;
@@ -97,7 +96,7 @@ function confetti_effect() {
 
     function playticksound() {
         if (!nosound ) {
-            createjs.Sound.volume = 0.4;
+            createjs.Sound.volume = 0.2;
             createjs.Sound.play("sound");
 /*             if (tickSound.currentTime!=0) return;
             tickSound.volume=0.5;              
@@ -157,21 +156,14 @@ export {playticksound};
             document.getElementById('id01').style.display='none';
             nosound=false;
             soundHandle = document.getElementById('soundHandle');              
-            soundHandle = document.getElementById('tickSound');  
-            tickSound.addEventListener("ended", function(){
+           /*  tickSound.addEventListener("ended", function(){
                 tickSound.currentTime = 0;
-           });
+           }); */
             soundHandle.autoplay = true;
             soundHandle.muted=false;
             soundHandle.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
             soundHandle.play();
             soundHandle.pause();
-            tickSound.autoplay = true;
-            tickSound.muted=false;
-            tickSound.src = "data:audio/wav;base64,//uURAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAADAAAJAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMz///////////////////////////////////////////8AAABQTEFNRTMuMTAwBLkAAAAAAAAAADUgJAO/jQAB4AAACQDIu0rqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//vkRAAAAlUAV20AAApUoJqtoQABWKlHW/m8JAMbqOl3N5BAAAASUmbc+/AjMPD8z8AAAD8w8PDDHf//0PDBH/4eHv/wB3+P//DAAAAAAPDw8PSAAAACA8PDw8MAAAAAA8PDw9IAAAA5sPD36ABAAAABhZRCTnACTgYGBi4e8AAMzz+5gCD///jj///wd////wDDw/MPAAAAAEYeHh4eAAAAAIw8PDw8AAAAARh4eHngAAAAAGHh5/////xx///////jwBgARCARwJwAAEAJOwEAgDgnMy9hMZTB9xIANbJkJgZ6TGxIRrL6WRQ0HQRBIMl5cEBJpElJBK3m2I5BQULlYgsVvBBcZgEEKXPItpsQgMZFmAxk4f1226tuheBQgwhdh/GblqDFYGBDiPcWyd1c0eQQRNw5GrheTwrXpkNU+h5r8xb6ejg5duP/Vypnuqf//7X+///9bHGrllWx///////////GrllWxxq5Zf////////////9NdpaW5TU12lpddpv/9qrQCAIBKUAQAAAPfgIBgDFhcGh5iqsdsICoKAgcQggGCjdlYzd3MkCTNAoACC4DFTMSKDAAFRFGtzhGAIEGmtzai9cCA5MYGi0PJXr/o2UJPl2TocK0YaBIokBDT9Nozt+RaN14bK0S7BfoGBIXr6UAlrvyiPXG0ChD4moEOBojPkh8GaLxm1QNLYvPc7VypkeKT///Joor///02ONLlTSrH//////////8auWVbHGrlTf////////////77UtLS/clVLSxm5TUykAABQAAAOAAIlI1vgOoAqDAst6MxOB3nEAXSVrWCYtIWbvxROVGp5fMSa7M3H8UCg9rKEpx35jic4CM8yJp0CqFuBeAOUg0Fgq4OIhIzYnLYSo0h8tFrDcGLq9pnbhuKwS5tdhrZ0NXcgJzFsLmcansX7XCABAAAHAAkTSoyy5WwM0vF+3jmEDCzTOYda7Hs9QY42N6EwtkrlO+y5m6qrDlC2SwDDoIKytCkRDWQCtAVgldIgAuNAALAgKB+gYK6kgAqROZ0VcL2BByNx+CFFqVK+VKsEpumi7Siw8J5EHQaktKt1uUXvyruspjdBNW8ETkIZf8OxLMGEOXNTuQ4LMLWl4YJkXXpboXFvZ9scBiZ8OTjC04Mr0wD1UsKK1w4BN2xWFwSx/Hkq2VWnS1KZVxIJPzpql3kRzbXznGeqVsMV7gLRyqBogAoHDCfQjGrgVeCTGui1nrLlMuWGZE068/tKz0i0spG9Wp+A96tdoT//u0ZLgDM5woU+9jAAh15Qo67GABC2iXUpWXgCmCk+lSsPAELIOmETYkY4KE1ZjiJMFcQIVUA8xirJSE0SBgHKwgtRqF+U5MFpIpY8yxk1b0NUolmFGV1twqLGFVZUNTUQATBgYsBwNAAPnSDG5MiCwUEpUtoYo1m4KpeUKg0/KjXXQ5MeEgZpNrEYQgHa0puePj8o25oygBlP6//ChgqqQc5lURcnX6MS8GiA1CMAnMmYf19n6lUM1atmtWQUbIhNBwow5sHBYFmYlFn1iX73/+sDA9qk5YzcZ/qtLS1qb/////7/8/+xqrSymtTU1X7i84CoiCoKiL6ZwvOf/y58EC58KcEU2QWQYADQChJ4TgcCg1JIGmxABACN2YCMBtJU5gib/QbKTzgkfC+qSOHQE6FiVpMm14ok1ovU6S+S0P/4AKESprAx6AWc6/IRnBxxj2hdRDN/a0y7OpmU4XdhKoNHVwKiihDcmtNe+Uv7W/Wu72PZQO7j+Tkbl7jO1KYzDNam////+3SUljO33UNTMZjNamjVX///////////+llNampqtLS5U39ybiwlCQNCU6Hf03F0xBTUUzLjEwMKqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq//uURPMABUo4UP5vRCCzyMo/zWSEAAABpBwAACAAADSDgAAEqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq";
-            tickSound.play();
-            tickSound.pause();
-            //tickSound.load();
             createjs.Sound.registerSound({src:"audio/tick.mp3", id:"sound"});
     
         });
@@ -179,8 +171,12 @@ export {playticksound};
             "visibilitychange",
              function(evt) {
               if (document.visibilityState != "visible") {
+                
                 soundHandle.pause();
-                soundHandle.currentTime=0;              }
+                soundHandle.currentTime=0;
+                createjs.Sound.stop();
+                window.location.reload();
+                }
             },
             false,
           );

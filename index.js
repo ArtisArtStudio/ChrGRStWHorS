@@ -61,6 +61,7 @@ window.onload = async () => {
     const wheel = new Wheel(container, props);
     wheel.isInteractive = true;
     document.querySelector('.wheel-wrapper').style.visibility = 'visible';
+
     var functionFinished = function() {
         if (finishedSpin) {
           finishedSpin=false;
@@ -89,6 +90,7 @@ window.onload = async () => {
           wheel.isSpinning=0;
           wheel.spinTo(1);
           onResetClicked();
+          document.getElementById("scratcher-box").focus();
           return;
         }
         if (wheel.isSpinning) {
@@ -100,6 +102,7 @@ window.onload = async () => {
         const spinDirection = 1;
         const revolutions = 8;
         //playticksound();
+        document.getElementById("scratcher-box").focus();
         wheel.spinToItem(winningItemIndex, duration, true, revolutions, spinDirection, easeOut);
 
       }
