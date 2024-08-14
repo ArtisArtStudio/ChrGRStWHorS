@@ -69,7 +69,7 @@ text-shadow: 4px 6px #FFFFFF;
 font-family: "Bona Nova SC", serif;
 color: #000000 !important;
 font-style: normal;
-font-size:5vmin;
+font-size: calc(1rem + 1vw);
 text-align: right;
 } 
 .pagetop h4 {
@@ -94,17 +94,10 @@ text-align: right;
 
     /*transform: translateX(-10%) scale(0.8, 0.8);*/
   }
-  
-  .tabletop h4 {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    color: #000000;
-    flex-direction: column;
-    font-size:4vmin;
-    text-align: right;
-} 
-
-#tboy {
+  #boy {
+    line-height: 18vh;
+  }
+ #tboy {
   margin-left: auto;
   margin-right: 0;
   text-align:right;
@@ -112,14 +105,9 @@ text-align: right;
 
 }
 
-
-
-
-
-
-#or {
+/* #or {
 font-size: 7vw !important;
-}
+} */
 #reveal {
   float: right;
   display: inline-table;
@@ -138,7 +126,7 @@ font-size: 7vw !important;
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
   /* background-color: #FFFFFF; */
-  top: 55%;
+  top: 45%;
   left: 0%;
   border-radius: 5%;
 }
@@ -156,7 +144,7 @@ font-size: 7vw !important;
 
   }
 }
-@media (min-height: 365px), (max-width: 671px) { 
+@media (min-height: 365px) and (max-width: 671px) { 
   .pagetop h1 {
     font-size: calc(5rem + 1vw);
   }
@@ -175,12 +163,13 @@ font-size: 7vw !important;
 
   }
   #scratcher-box {
-    scale: 0.95;
-    top: 50%;
+    width: 20em;
+    height: 20em;
+    top: 45%;
     left: 0%;
   }
 }
-@media (max-height: 360px){ 
+@media (max-height: 375px){ 
   .pagetop h1 {
     font-size: calc(5rem + 0.55vw);
   }
@@ -191,17 +180,18 @@ font-size: 7vw !important;
     font-size: calc(1rem + 1vw);
   }
   #scratcher-box {
-    scale: 0.8;
-    top: 40%;
-    left:-3%;
+    width: 18em;
+    height: 18em;
+    top: 45%;
+    left: 0%;
   }
   #t1
   {
-    width: calc(40% - 10px);
+    width: calc(50% - 10px);
 
   }
   #reveal {
-    width: calc(45% - 10px);
+    width: calc(50% - 10px);
 
   }
   .pagetop {
@@ -218,12 +208,27 @@ font-size: 7vw !important;
     width: calc(55% - 10px);
   }
 }
-@media only screen and (max-height:321px){ 
-  
+@media screen and (max-height:321px){ 
+  .pagetop h1 {
+    font-size: calc(1rem + 6vw);
+  }
   #scratcher-box {
-    scale: 0.7;
-    top:30% ;
-    left: -6%;
+    width: 16em;
+    height: 16em;
+    top: 45%;
+    left: 5%;
+  } 
+  
+}
+@media screen and (max-height:300px){ 
+  .pagetop h1 {
+    font-size: calc(1rem + 6vw);
+  }
+  #scratcher-box {
+    width: 15em;
+    height: 15em;
+    top: 50%;
+    left: 3vw;
   } 
   
 }
@@ -272,25 +277,23 @@ cursor: grab;
   
 }
 #resetbutton {
-border: none;
-padding: 10px 20px;
-color: #FFFFFF;
-cursor: pointer;
-transition: all 200ms ease-in-out;
-transition-duration: 200ms;
-transition-timing-function: ease-in-out;
-transition-delay: 0s;
-border-radius:1cap;
-text-align: center;
-text-decoration: none;
-display:block;
-font-size: 1rem;
-margin: auto;
-}
-#resetbutton:hover {
-  color: #000000;
-  background:snow!important;
-  border: 1px solid transparent;
+  border: none;
+  padding: 5px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  background-image: linear-gradient(to left, #00A44C 0%, #ED0000 51%, #00A44C 100%);
+  background-size: 200% auto;
+  transition: 0.5s;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  display:block;
+  font-size: 1rem;
+  }
+  
+.btn:hover {
+    background-position: right center; /* change the direction of the change here */
 }
 #baby{
   font-weight: 600;

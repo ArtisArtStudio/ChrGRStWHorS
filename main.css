@@ -112,9 +112,10 @@ white-space:normal;
 }
 #boy{
   line-height: 5vh;
+  text-align: center;
 }
 #t1 {
-  width: 350px;
+  width: 80%;
 }
 
 #scratcher-box {
@@ -141,7 +142,7 @@ white-space:normal;
   .pagetop h1 {
     font-size: calc(5rem + 3vw);
   }
- 
+
 }
 
 /* @media (max-width: 430px), (max-height:670px) {
@@ -163,9 +164,14 @@ white-space:normal;
 }  */
 
 @media (min-width: 768px) and (min-height: 1024px){ 
-  .pagetop h4 {
-    font-size: 2vh;
+  
+  .pagetop h3 {
+    font-size: calc(2rem + 1.2vw);
   }
+  .pagetop h1 {
+    font-size: calc(5rem + 4vw);
+  }
+
   #boy{
     line-height: 7vw;
   }
@@ -177,6 +183,9 @@ white-space:normal;
   }
 }
 @media (min-height: 768px) and (min-width: 1024px){ 
+  .pagetop h3 {
+    font-size: calc(2rem + 0.5vw);
+  }
   .pagetop h4 {
     font-size: 2vh;
   }
@@ -236,16 +245,16 @@ white-space:normal;
   #boy {
     line-height: 3vh !important;
   }
- 
+  .images{
+    max-width: 80% !important;
+  } 
   #scratcher-box {
     position:absolute;
     width: 18em;
     height: 18em; 
     top: 60%;
   }
-  .images{
-    max-width: 80% !important;
-  }
+
   #H3 {
     line-height: 17px;
   }
@@ -279,25 +288,24 @@ table {
   } 
 
 #resetbutton {
-border: none;
-padding: 10px 20px;
-color: #FFFFFF;
-cursor: pointer;
-transition: all 200ms ease-in-out;
-transition-duration: 200ms;
-transition-timing-function: ease-in-out;
-transition-delay: 0s;
-border-radius:1cap;
-text-align: center;
-text-decoration: none;
-display:block;
-font-size: 2vh;
-margin: auto;
-}
-#resetbutton:hover {
-  color: #000000;
-  background-color: snow!important;
-}
+  border: none;
+  padding: 10px 20px;
+  color: #ffffff;
+  cursor: pointer;
+  background-image: linear-gradient(to left, #00A44C 0%, #ED0000 51%, #00A44C 100%);
+  background-size: 200% auto;
+  transition: 0.5s;
+  border-radius: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  display:block;
+  font-size: 2vh;
+  }
+  
+  .btn:hover {
+      background-position: right center; /* change the direction of the change here */
+    }
 #baby{
   font-weight: 600;
 }
