@@ -47,7 +47,6 @@ function confetti_effect() {
 
     $('#H3').hide();
     $('#H4').hide();
-    $('#scratcher3Pct').hide();
     if(triggered==true) {
         return;
     }
@@ -81,7 +80,7 @@ function confetti_effect() {
             drift: randomInRange(-0.4, 0.4)
         });
         // keep going until we are out of time
-        if (timeLeft > 0) {
+        if (timeLeft > 0 && triggered==true) {
             requestAnimationFrame(frame);
 
             return;
