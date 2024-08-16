@@ -25,7 +25,6 @@ var gendertext2 = "It is a Boy!";
 var gendertext3= "It is a Demo!";
 //Select the gender text
 var gendertext = gendertext1;
-var c;
 function randomInRange(min, max) {
     return Math.random() * (max - min) + min;
 };
@@ -99,9 +98,6 @@ function confetti_effect() {
         if (!nosound ) {
             createjs.Sound.volume = 0.2;
             createjs.Sound.play("sound");
-/*             if (tickSound.currentTime!=0) return;
-            tickSound.volume=0.5;              
-            tickSound.play(); */
         }
 
     }
@@ -115,6 +111,7 @@ export {playticksound};
 
     function onResetClicked() {
         //$("#resetbutton").hide();
+
         $('#tboy').hide();
         $('#boy').show();
         $('#or').show();
@@ -127,6 +124,7 @@ export {playticksound};
         $('#H3').show();
         $('#H4').show();
         triggered = false;
+        confetti.reset();
         soundHandle.pause();
         soundHandle.currentTime = 0;    
         return false;
@@ -136,8 +134,6 @@ export {playticksound};
    
     
     function initPage() {
-        //alert("loaded main.js");
-
         var i, i1;
         surname = params.get('surname');
         if (surname !=null && surname.replace(/\s/g, '').length) {
@@ -157,9 +153,6 @@ export {playticksound};
             document.getElementById('id01').style.display='none';
             nosound=false;
             soundHandle = document.getElementById('soundHandle');              
-           /*  tickSound.addEventListener("ended", function(){
-                tickSound.currentTime = 0;
-           }); */
             soundHandle.autoplay = true;
             soundHandle.muted=false;
             soundHandle.src = "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
@@ -168,22 +161,6 @@ export {playticksound};
             createjs.Sound.registerSound({src:"audio/tick.mp3", id:"sound"});
     
         });
-        document.addEventListener(
-            "visibilitychange",
-             function(evt) {
-              if (document.visibilityState != "visible") {
-                
-                soundHandle.pause();
-                soundHandle.currentTime=0;
-                createjs.Sound.stop();
-                window.location.reload();
-                }
-            },
-            false,
-          );
-      
-        
-        //document.getElementById("resetbutton").style.backgroundColor = colortxt;
 
     };
     

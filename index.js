@@ -81,7 +81,19 @@ window.onload = async () => {
     //wheel.onSpin = playtick;
     wheel.onCurrentIndexChange= playtick;
 
-
+    document.addEventListener(
+        "visibilitychange",
+         function(evt) {
+            //alert(document.visibilityState);
+          if (document.visibilityState != "visible") {
+            wheel.isSpinning=0;
+            finishedSpin=true;
+            wheel.spinTo(1);
+            onResetClicked();
+            }
+        },
+        false,
+      );
     window.addEventListener('click', (e) => {
   
       // Listen for click event on spin button:
