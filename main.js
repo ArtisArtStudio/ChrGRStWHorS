@@ -34,6 +34,7 @@ function randomInRangeint(min, max) {
 };
 function confetti_effect() {
     soundHandle.src = 'audio/celebrate.mp3';
+    $("#resetbutton").hide();
     $('#tboy').show();
     $('#tboy').text(gendertext);
     $('#tboy').css('color',colortxt);
@@ -86,7 +87,7 @@ function confetti_effect() {
 
             return;
         }
-        //$("#resetbutton").show();
+        $("#resetbutton").show();
 
     }());
           
