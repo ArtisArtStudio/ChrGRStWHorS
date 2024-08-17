@@ -63,7 +63,7 @@ function confetti_effect() {
         var timeLeft = animationEnd - Date.now();
         // var ticks = Math.max(200, 300 * (timeLeft / duration));
         skew = Math.max(0.8, skew - 0.001);
-        c = confetti({
+        confetti({
             particleCount: 1,
             startVelocity: 0,
             ticks: 100,
@@ -142,7 +142,7 @@ export {playticksound};
             surname="the";
         }
         
-        document.getElementById('intro').innerHTML= "This is a gender reveal spin the wheel for <strong>" + surname + "</strong> family. It contains sound when the gender is revealed. Do you want to continue with sound?";
+        document.getElementById('intro').innerHTML= "This is a gender reveal spin the wheel for <strong>" + surname + "</strong> family. It contains high level sound. Do you want to continue with sound?";
         document.getElementById('id01').style.display='block';
         $('.nosoundbtn').on("click", function (e) {
             document.getElementById('id01').style.display='none';
