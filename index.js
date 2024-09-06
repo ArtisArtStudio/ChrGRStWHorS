@@ -12,10 +12,11 @@ window.onload = async () => {
     const container = document.querySelector('.wheel-wrapper');
     const btn = document.getElementById("resetbutton");
     const props = {
+        itemw: 1,
         radius: 0.9,
         pointerAngle: 0,
         itemLabelRadius: 0.6,
-        itemLabelRadiusMax: 0.9,
+        itemLabelRadiusMax: 0.9, 
         itemLabelRotation: 0,
         itemLabelFont: 'bona nova sc',
         itemLabelAlign: "center",
@@ -109,13 +110,13 @@ window.onload = async () => {
           return;
         }
         
-        const winningItemIndex = fetchWinningItemIndexFromApi();
+        //const winningItemIndex = fetchWinningItemIndexFromApi();
         const duration = 13000;
         const spinDirection = 1;
         const revolutions = 8;
         //playticksound();
         document.getElementById("scratcher-box").focus();
-        wheel.spinToItem(winningItemIndex, duration, true, revolutions, spinDirection, easeOut);
+        wheel.spinToItem(props.itemw, duration, true, revolutions, spinDirection, easeOutCubic);
 
       }
   
@@ -124,10 +125,10 @@ window.onload = async () => {
     });  
    
   };
-  function fetchWinningItemIndexFromApi() {
-    // Simulate a call to the back-end
-    return 1;
-  }
+//   function fetchWinningItemIndexFromApi() {
+//     // Simulate a call to the back-end
+//     return 0;
+//   }
 
   async function loadImages(images) {
   const promises=[];
@@ -316,6 +317,7 @@ var p = Object.freeze({
             image: null,
             isInteractive: !0,
             isSpinning: !0,
+            itemw: 1,
             itemBackgroundColors: ["#fff"],
             itemLabelAlign: p.right,
             itemLabelBaselineOffset: 0,
@@ -564,6 +566,10 @@ var easeOut = function easeOutCirc( t ) {
     return Math.sqrt( 1 - t1 * t1 );
   
   }
+
+var easeOutCubic = function easeoutcubic(x) {  
+    return 1 - Math.pow(1 - x, 3);
+  }
 var Wheel = class {
     constructor(e, t = {}) {
         if (!(e instanceof Element)) throw new Error("container must be an instance of Element");
@@ -573,7 +579,7 @@ var Wheel = class {
         t ? this.init(t) : this.init(o.wheel)
     }
     init(e = {}) {
-        this._isInitialising = !0, this.borderColor = e.borderColor, this.borderWidth = e.borderWidth, this.debug = e.debug, this.image = e.image, this.isInteractive = e.isInteractive, this.itemBackgroundColors = e.itemBackgroundColors, this.itemLabelAlign = e.itemLabelAlign, this.itemLabelBaselineOffset = e.itemLabelBaselineOffset, this.itemLabelColors = e.itemLabelColors, this.itemLabelFont = e.itemLabelFont, this.itemLabelFontSizeMax = e.itemLabelFontSizeMax, this.itemLabelRadius = e.itemLabelRadius, this.itemLabelRadiusMax = e.itemLabelRadiusMax, this.itemLabelRotation = e.itemLabelRotation, this.itemLabelStrokeColor = e.itemLabelStrokeColor, this.itemLabelStrokeWidth = e.itemLabelStrokeWidth, this.items = e.items, this.lineColor = e.lineColor, this.lineWidth = e.lineWidth, this.pixelRatio = e.pixelRatio, this.rotationSpeedMax = e.rotationSpeedMax, this.radius = e.radius, this.rotation = e.rotation, this.rotationResistance = e.rotationResistance, this.offset = e.offset, this.onCurrentIndexChange = e.onCurrentIndexChange, this.onRest = e.onRest, this.onSpin = e.onSpin, this.overlayImage = e.overlayImage, this.pointerAngle = e.pointerAngle
+        this._isInitialising = !0, this.borderColor = e.borderColor, this.borderWidth = e.borderWidth, this.debug = e.debug, this.image = e.image, this.isInteractive = e.isInteractive, this.itemBackgroundColors = e.itemBackgroundColors, this.itemLabelAlign = e.itemLabelAlign, this.itemLabelBaselineOffset = e.itemLabelBaselineOffset, this.itemLabelColors = e.itemLabelColors, this.itemLabelFont = e.itemLabelFont, this.itemLabelFontSizeMax = e.itemLabelFontSizeMax, this.itemLabelRadius = e.itemLabelRadius, this.itemLabelRadiusMax = e.itemLabelRadiusMax, this.itemLabelRotation = e.itemLabelRotation, this.itemLabelStrokeColor = e.itemLabelStrokeColor, this.itemLabelStrokeWidth = e.itemLabelStrokeWidth, this.items = e.items, this.lineColor = e.lineColor, this.lineWidth = e.lineWidth, this.pixelRatio = e.pixelRatio, this.rotationSpeedMax = e.rotationSpeedMax, this.radius = e.radius, this.rotation = e.rotation, this.rotationResistance = e.rotationResistance, this.offset = e.offset, this.onCurrentIndexChange = e.onCurrentIndexChange, this.onRest = e.onRest, this.onSpin = e.onSpin, this.overlayImage = e.overlayImage, this.itemw = e.itemw, this.pointerAngle = e.pointerAngle
     }
     add(e) {
         this._canvasContainer = e, this.canvas = document.createElement("canvas"), this._context = this.canvas.getContext("2d"), this._canvasContainer.append(this.canvas), V(this), this._isInitialising === !1 && this.resize()
@@ -1234,7 +1240,7 @@ var Wheel = class {
             break
         }
         
-        this.refreshCursor(), e > 90 && this.spinToItem(1,13000,true,8,1,easeOut);// && this.beginSpin(e * (1e3 / 250), "interact")
+        this.refreshCursor(), e > 90 && this.spinToItem(this.itemw,13000,true,8,1,easeOutCubic);// && this.beginSpin(e * (1e3 / 250), "interact")
     }
     isDragEventTooOld(e = 0, t = {}) {
         return e - t.now > 250
