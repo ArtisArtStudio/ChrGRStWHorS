@@ -12,7 +12,7 @@ window.onload = async () => {
     const container = document.querySelector('.wheel-wrapper');
     const btn = document.getElementById("resetbutton");
     const props = {
-        itemw: 1,
+        itemw: 4,
         radius: 0.9,
         pointerAngle: 0,
         itemLabelRadius: 0.6,

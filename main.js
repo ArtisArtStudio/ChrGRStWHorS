@@ -17,14 +17,14 @@ var colortxt1 = '#8d0000';
 var colortxt2= '#00612d';
 var colortxt3= '#000000';
 //Select the background color
-var color =color1;
+var color =color2;
 //Select the text color
-var colortxt = colortxt1;
+var colortxt = colortxt2;
 var gendertext1 = "It is a Girl!";
 var gendertext2 = "It is a Boy!";
 var gendertext3= "It is a Demo!";
 //Select the gender text
-var gendertext = gendertext1;
+var gendertext = gendertext2;
 function randomInRange(min, max) {
     return Math.random() * (max - min) + min;
 };
@@ -142,7 +142,8 @@ export {playticksound};
             surname="the";
         }
         
-        document.getElementById('intro').innerHTML= "This is a gender reveal spin the wheel for <strong>" + surname + "</strong> family. It contains high level sound. Do you want to continue with sound?";
+        //document.getElementById('intro').innerHTML= "This is a gender reveal spin the wheel for <strong>" + surname + "</strong> family. It contains high level sound. Do you want to continue with sound?";
+        document.getElementById('surname').innerHTML= surname + " family";
         document.getElementById('id01').style.display='block';
         $('.nosoundbtn').on("click", function (e) {
             document.getElementById('id01').style.display='none';
