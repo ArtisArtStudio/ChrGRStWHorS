@@ -36,7 +36,7 @@ window.onload = async () => {
           label: 'Girl',
         },
         {
-          label: 'Twin Boy',
+          label: 'Twin Boys',
         },
         {
           label: 'Girl',
@@ -45,7 +45,7 @@ window.onload = async () => {
           label: 'Boy',
         },
         {
-          label: 'Twin Girl',
+          label: 'Twin Girls',
         },
         {
           label: 'Boy',
