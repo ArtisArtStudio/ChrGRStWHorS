@@ -63,7 +63,7 @@ flex-direction: column;
 font-size: calc(4rem + 0.8vw);
 text-align: right;
 padding-right: 10px;
-text-shadow: 4px 6px #FFFFFF;
+text-shadow: 4px 2px #FFFFFF;
 } 
 #or {
   font-size: calc(2rem + 0.8vw);
@@ -99,7 +99,7 @@ text-align: center;
     /*transform: translateX(-10%) scale(0.8, 0.8);*/
   }
   #boy {
-    line-height: 18vh;
+  line-height: 1 !important;
   }
  #tboy {
   margin-left: auto;
@@ -189,13 +189,16 @@ font-size: 7vw !important;
     top: 50%;
     left: 0%;
   }
+  #boy{
+    line-height: 0.7 !important;
+  }
   #t1
   {
     width: calc(50% - 10px);
 
   }
   #reveal {
-    width: calc(50% - 10px);
+    width: calc(55% - 10px);
 
   }
   .pagetop {
@@ -222,6 +225,9 @@ font-size: 7vw !important;
     top: 50%;
     left: 5%;
   } 
+  #boy{
+    line-height: 0.6 !important;
+  }
   
 }
 @media screen and (max-height:290px){ 
@@ -234,7 +240,9 @@ font-size: 7vw !important;
     top: 50%;
     left: 3vw;
   } 
-  
+  #boy{
+    line-height: 0.5 !important;
+  }
 }
 /* @media (max-height:351px) and (min-height:319){ 
   

@@ -20,7 +20,7 @@ window.onload = async () => {
         itemLabelRotation: 0,
         itemLabelFont: 'bona nova sc',
         itemLabelAlign: "center",
-        itemLabelColors: ['#000'],
+        itemLabelColors: ['#FFFFFF'],
         itemLabelBaselineOffset: -0.06,
         itemBackgroundColors: ['#016b33','#c21b1b'],
         rotationSpeed: 10,

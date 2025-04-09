@@ -66,7 +66,7 @@ font-weight: 400;
 flex-direction: column;
 font-size: calc(5rem + 1vw);
 text-align: center;
-text-shadow: 4px 6px #FFFFFF;
+text-shadow: 4px 2px #FFFFFF;
 } 
 #or {
   font-size: calc(3rem + 1vw);
@@ -111,7 +111,6 @@ white-space:normal;
   white-space: normal;
 }
 #boy{
-  line-height: 6vh !important;
   text-align: center;
 }
 #t1 {
@@ -132,7 +131,7 @@ white-space:normal;
   -moz-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  top: 65%;
+  top: 70%;
   left: 50%;
 }
 /* Styles for mobile phones */ 
@@ -159,9 +158,6 @@ white-space:normal;
   .pagetop h3 {
     font-size: calc(1.5rem + 0.5vw);
   }
-  #or{
-    line-height: 5vh !important;
-  }
 }  */
 
 @media (min-width: 768px) and (min-height: 930px){ 
@@ -173,14 +169,12 @@ white-space:normal;
     font-size: calc(5rem + 4vw);
   }
 
-  #boy{
-    line-height: 10vh !important;
-  }
+
   #scratcher-box {
     position:absolute;
     width: 30em;
     height: 30em; 
-    top: 65%;
+    top: 70%;
   }
 }
 @media (min-height: 635px) and (min-width: 1024px){ 
@@ -190,14 +184,12 @@ white-space:normal;
   .pagetop h4 {
     font-size: 2vh;
   }
-  #boy{
-    line-height: 9vh !important;
-  }
+  
   #scratcher-box {
     position:absolute;
     width: 26em;
     height: 26em; 
-    top: 65%;
+    top: 70%;
   }
 }
 @media (max-width: 375px), (max-height:667px) {
@@ -218,17 +210,20 @@ white-space:normal;
       -o-transform-origin: top left;
       transform-origin: top left;
   } */
-  #boy {
-    line-height: 6vh !important;
-  }
-  /* .images{
+   .images{
     max-width: 80% !important;
-  } */
+  }
   #scratcher-box {
     position:absolute;
-    width: 22em;
-    height: 22em; 
-    top: 65%;
+    width: 20em;
+    height: 20em; 
+    top: 64%;
+  }
+  #boy{
+    line-height: 0.5 !important;
+  } 
+  #reveal{
+    line-height: 0.9 !important;
   }
   
 } 
@@ -243,23 +238,22 @@ white-space:normal;
   .pagetop h4 {
     font-size: calc(0.7rem + 0.6vw) ;
   }
-  #boy {
-    line-height: 8vh !important;
-  }
   .images{
     max-width: 75% !important;
   } 
   #scratcher-box {
     position:absolute;
-    width: 18em;
-    height: 18em; 
-    top: 68%;
+    width: 17em;
+    height: 17em; 
+    top: 64%;
   }
-
-  #H3 {
-    line-height: 20px;
+  #boy{
+    line-height: 0.5 !important;
   }
-/*   #t1 {
+  #reveal{
+    line-height: 0.9 !important;
+  }
+  /* #t1 {
     width: 300px;
   } */
 }
